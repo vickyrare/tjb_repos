@@ -11,14 +11,14 @@ batch_content = ""
 for mp3 in mp3_files:
     title = os.path.basename("../" + mp3)
     tag = TinyTag.get('../' + mp3)
-    filesize = tag.filesize / 1024 / 1024
+    filesize = tag.filesize / 1024
 
     mins = int(tag.duration / 60)
     seconds = tag.duration
 
     duration = "{:02d} mins {:02d} secs".format(mins, int(seconds - mins * 60))
 
-    batch_content += "{}, {}, {} MB, {}\n".format(title, mp3, round(filesize, 2), duration)
+    batch_content += "{}, {}, {}, {}\n".format(title, mp3, round(filesize), duration)
 
 with open(available_files_location, "w") as available_file:
     available_file.write(batch_content)
