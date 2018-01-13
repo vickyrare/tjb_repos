@@ -10,7 +10,13 @@ batch_content = ""
 
 for mp3 in mp3_files:
     title = os.path.basename("../" + mp3)
+
     tag = TinyTag.get('../' + mp3)
+
+    sample_rate = tag.samplerate
+    
+    print("title: {} sample_rate: {}".format(title, sample_rate))
+
     filesize = tag.filesize / 1024
 
     mins = int(tag.duration / 60)
